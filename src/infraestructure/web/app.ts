@@ -1,6 +1,7 @@
 import  express, {type Request, type Response} from "express";
 import cors from "cors";
 import userRoutes from "../routes/UserRoutes";
+import climateAlertRoutes from "../../modules/alerts/infrastructure/ClimateAlertRoutes";
 
 class App {
 
@@ -20,6 +21,7 @@ class App {
 
     private routes():void{
       this.app.use("/api",userRoutes);
+      this.app.use("/api/alerts", climateAlertRoutes);
     }
 
     getApp(){

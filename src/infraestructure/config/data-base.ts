@@ -1,10 +1,12 @@
     import { DataSource } from "typeorm";
     import dotenv from "dotenv";
     import { User } from "../entities/User";
+import { ClimateAlertEntity } from "../../modules/alerts/infrastructure/ClimateAlertEntity";
     import envs from "../config/environment-vars";
 
     export const AppDataSource = new DataSource({
     type: "postgres",
+    host: envs.DB_HOST,
     port: Number(envs.DB_PORT),
     username: envs.DB_USER,
     password: envs.DB_PASSWORD,
@@ -12,7 +14,7 @@
     schema: "users",
     synchronize: true,
     logging: true,
-    entities: [User],
+    entities: [User, ClimateAlertEntity],
     });
 
     //conectar a la BD
